@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+function bootstrap {
+  local shome="$(unset CDPATH; cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  app compile dmg \
+    'https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4.dmg' \
+    'Vagrant' 'Vagrant.pkg'
+}
+
+bootstrap
