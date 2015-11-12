@@ -1,6 +1,7 @@
 {
   "require": [
     [
+      "parity",
       "virtualbox",
       "digitalocean",
       "aws",
