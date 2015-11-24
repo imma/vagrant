@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function main {
-  if [[ -x "$(type -P vagrant)" ]]; then
+  if [[ -x "$(which /usr/bin/vagrant /usr/local/bin/vagrant 2>&- || true)" ]]; then
     return 1
   else
     return 0

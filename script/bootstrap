@@ -4,9 +4,18 @@ function bootstrap {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   source "$shome/script/profile"
 
-  app compile dmg \
-    'https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4.dmg' \
-    'Vagrant' 'Vagrant.pkg'
+  case "$(uname -s)" in
+    Darwin)
+      app compile dmg \
+        'https://dl.bintray.com/mitchellh/vagrant/vagrant_1.7.4.dmg' \
+        'Vagrant' 'Vagrant.pkg'
+      ;;
+    Linux)
+      local url_vagrant='https://releases.hashicorp.com/vagrant/1.7.4/vagrant_1.7.4_x86_64.deb'
+      curl -L -o 'vagrant_1.7.4_x86_64.deb' "$url_vagrant"
+      rm -f 'vagrant_1.7.4_x86_64.deb'
+      ;;
+  esac
 }
 
 bootstrap
