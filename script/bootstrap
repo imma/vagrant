@@ -13,6 +13,7 @@ function bootstrap {
     Linux)
       local url_vagrant='https://releases.hashicorp.com/vagrant/1.7.4/vagrant_1.7.4_x86_64.deb'
       curl -L -o 'vagrant_1.7.4_x86_64.deb' "$url_vagrant"
+      sudo dpkg -i 'vagrant_1.7.4_x86_64.deb'
       rm -f 'vagrant_1.7.4_x86_64.deb'
       ;;
   esac
