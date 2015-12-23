@@ -9,7 +9,7 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       app compile dmg \
-        "https://dl.bintray.com/mitchellh/vagrant/vagrant_${ver_vagrant}.dmg" \
+        "https://releases.hashicorp.com/vagrant/${ver_vagrant}/vagrant_${ver_vagrant}.dmg" \
         'Vagrant' 'Vagrant.pkg'
       ;;
     Linux)
