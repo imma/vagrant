@@ -7,11 +7,10 @@ function main {
   local nm_guest="$1"; shift
   local cfg_ssh="$shome/.vagrant-${nm_guest}-ssh-config"
 
+  rm -f "$cfg_ssh"
   if vagrant reload "$nm_guest" "$@"; then
     vagrant ssh-config "$nm_guest" > "$cfg_ssh.tmp"
     mv -f "$cfg_ssh.tmp" "$cfg_ssh"
-  else
-    rm -f "$cfg_ssh"
   fi
 
 }
