@@ -3,7 +3,7 @@
 function profile {
   local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
   PATH="$shome/bin:$shome/exec:$PATH"
-  export VAGRANT_HOME="$shome/.vagrant.d"
+  export VAGRANT_HOME="${VAGRANT_HOME:-shome/.vagrant.d}"
 }
 
 profile
