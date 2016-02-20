@@ -6,11 +6,8 @@ function main {
 
   local nm_guest="$1"; shift
   local cfg_ssh="$shome/.vagrant-${nm_guest}-ssh-config"
-  if [[ ! -e "$cfg_ssh" ]]; then
-    vagrant ssh-config "$nm_guest" > "$cfg_ssh.tmp"
-    mv -f "$cfg_ssh.tmp" "$cfg_ssh"
-  fi
 
+  parity ssh config "$nm_guest"
   exec rsync -e "$(printf 'ssh -F %q' "$cfg_ssh")" "$@"
 }
 
