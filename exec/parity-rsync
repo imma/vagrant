@@ -7,7 +7,7 @@ function main {
   local nm_guest="$1"; shift
   local cfg_ssh="$shome/.vagrant-${nm_guest}-ssh-config"
 
-  parity ssh config "$nm_guest"
+  parity ssh config "$nm_guest" > /dev/null
   exec rsync -e "$(printf 'ssh -F %q' "$cfg_ssh")" "$@"
 }
 
