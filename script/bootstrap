@@ -16,7 +16,7 @@ function bootstrap {
       local url_vagrant="https://releases.hashicorp.com/vagrant/${ver_vagrant}/vagrant_${ver_vagrant}_x86_64.deb"
       local fnm_vagrant="$(basename "$url_vagrant")"
       cache curl "$fnm_vagrant" "$url_vagrant" -sS -L
-      sudo dpkg -i "${BASEBOX_CACHE}/curl/fnm_vagrant"
+      sudo dpkg -i "${BASEBOX_CACHE}/curl/$fnm_vagrant"
       ;;
   esac
 }
