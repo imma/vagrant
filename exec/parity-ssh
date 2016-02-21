@@ -11,4 +11,4 @@ function main {
   exec ssh -F "$cfg_ssh" "$nm_guest" "$@"
 }
 
-main "$@"
+source sub "$BASH_SOURCE" "$@"
