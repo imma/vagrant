@@ -9,7 +9,7 @@ function main {
 
   rm -f "$cfg_ssh"
   if vagrant reload "$nm_guest" "$@"; then
-    parity ssh config "$nm_guest"
+    parity ssh_config "$nm_guest"
   fi
 
 }
