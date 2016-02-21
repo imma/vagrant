@@ -5,7 +5,7 @@ function main {
 
   source "$shome/script/profile"
 
-  if [[ "${2:-}" =~ ssh|rsync|scp ]]; then
+  if [[ "${2:-}" =~ ^(ssh|rsync|scp)$ ]]; then
     local nm_guest="$1"; shift
     local nm_parity="$1"; shift
     exec "parity-${nm_parity}" "$nm_guest" "$@"
