@@ -8,7 +8,7 @@ function main {
   local cfg_ssh="$shome/.vagrant-${nm_guest}-ssh-config"
 
   parity ssh_config "$nm_guest" > /dev/null
-  exec ssh -F "$cfg_ssh" "$nm_guest" "$@"
+  exec ssh -F "$cfg_ssh" -o IdentitiesOnly=no "$nm_guest" "$@"
 }
 
 source sub "$BASH_SOURCE" "$@"
