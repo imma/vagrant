@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+local cfg_ssh="$shome/.vagrant-${BASEBOX_INSTANCE:+${BASEBOX_INSTANCE}-}${nm_guest}-ssh-config"
