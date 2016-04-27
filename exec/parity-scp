@@ -8,7 +8,7 @@ function main {
   source "$shome/exec/vagrant_common"
 
   parity ssh_config "$nm_guest" > /dev/null
-  scp -F "$cfg_ssh" "$@"
+  scp -F "$cfg_ssh" -o IdentitiesOnly=no "$@"
 }
 
 main "$@"

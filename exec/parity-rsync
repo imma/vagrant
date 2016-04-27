@@ -8,7 +8,7 @@ function main {
   source "$shome/exec/vagrant_common"
 
   parity ssh_config "$nm_guest" > /dev/null
-  exec rsync -e "$(printf 'ssh -F %q' "$cfg_ssh")" "$@"
+  exec rsync -e "$(printf 'ssh -F %q -o IdentitiesOnly=no' "$cfg_ssh")" "$@"
 }
 
 main "$@"
