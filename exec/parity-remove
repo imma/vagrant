@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+function main {
+  local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
+  source "$shome/script/profile"
+
+  local nm_vagrant_provider="$VAGRANT_DEFAULT_PROVIDER"
+  local pth_box=
+
+  exec vagrant box remove --provider "$nm_vagrant_provider" ${BASEBOX_NAME}${2:+-$2}
+}
+
+source sub "$0" "$@"
