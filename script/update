@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function vagrant_update {
-  local shome="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"
+  local shome="${_vagrant_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   source "$shome/script/profile"
 
   (set +f; rm -vf "$shome"/.vagrant*ssh-config)
