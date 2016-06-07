@@ -1,6 +1,1 @@
-Setup
-=====
-
-For bash, source `script/profile` to expose the `vagrant` command.  Requires the
-`defn/app` project installed and sourced.
-
+Visit http://defn.sh/vagrant/ or open `docs/index.html`
