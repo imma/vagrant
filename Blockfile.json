@@ -1,11 +1,6 @@
 {
   "require": [
     "curl",
-    [
-      "parity",
-      "virtualbox",
-      "aws",
-      "docker"
-    ]
+    "parity"
   ]
 }
