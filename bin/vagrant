@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+if [[ -n "${DEBUG:-}" ]]; then
+  echo VAGRANT_DEFAULT_PROVIDER "${VAGRANT_DEFAULT_PROVIDER:-}" 1>&2
+fi
+
 function main {
   local shome="${_vagrant_home:-"$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"}"
 
