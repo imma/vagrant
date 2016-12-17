@@ -5,9 +5,7 @@ function version {
   source "$shome/script/profile"
 
   local ver_vagrant="$(vagrant --version 2>/dev/null | awk '{print $2}' || true)"
-  vagrant plugin list \
-    | perl -pe 's{^(\S+)\s+\(([^\s,)]+).*$}{sprintf("[\"%s\",\"%s\"]",$1,$2)}e' \
-    | jq -s --arg vagrant "$ver_vagrant" 'reduce .[] as $p ({vagrant: $vagrant}; .[$p[0]] = $p[1])'
+  jq -s --arg vagrant "$ver_vagrant" '{vagrant: $vagrant}'
 }
 
 version "$@"
