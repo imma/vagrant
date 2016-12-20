@@ -5,7 +5,7 @@ function version {
   source "$shome/script/profile"
 
   local ver_vagrant="$(vagrant --version 2>/dev/null | awk '{print $2}' || true)"
-  jq -s --arg vagrant "$ver_vagrant" '{vagrant: $vagrant}'
+  jq -n -s --arg vagrant "$ver_vagrant" '{vagrant: $vagrant}'
 }
 
 version "$@"
