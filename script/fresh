@@ -4,7 +4,7 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  if [[ "$(block version | jq -r '.vagrant')" != "$VAGRANT_VERSION" ]]; then
+  if [[ "$($shome/script/version | jq -r '.vagrant')" != "$VAGRANT_VERSION" ]]; then
     return 1
   fi
 
