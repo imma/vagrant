@@ -7,7 +7,7 @@ function bootstrap {
   case "$(uname -s)" in
     Darwin)
       block compile dmg \
-        "https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}.dmg" \
+        "https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.dmg" \
         'Vagrant' 'Vagrant.pkg'
       ;;
     Linux)
