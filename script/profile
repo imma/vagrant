@@ -4,7 +4,7 @@ function _vagrant_profile {
   local shome="${_vagrant_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
 
-  VAGRANT_VERSION='1.9.3'
+  VAGRANT_VERSION='1.9.4'
 }
 
 _vagrant_profile
