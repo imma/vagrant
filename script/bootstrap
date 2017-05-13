@@ -17,6 +17,8 @@ function bootstrap {
       sudo dpkg -i "${BASEBOX_CACHE}/curl/$fnm_vagrant"
       ;;
   esac
+
+  vagrant plugin install vagrant-aws
 }
 
 bootstrap
