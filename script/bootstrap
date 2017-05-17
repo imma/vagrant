@@ -4,10 +4,19 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
+  pkg ensure devel/pkgconf
+  pkg ensure textproc/libxslt
+  pkg ensure textproc/libxml2
+
+  bundle config build.nokogiri --use-system-libraries --with-xml2-config="$(which xml2-config)" --with-xslt-config="$(which xslt-config)"
+
+  ln -nfs libxml2/libxml "$PKG_HOME/install/include/libxml"
+
   git clone git@github.com:mitchellh/vagrant "$shome/vendor/vagrant" 2>/dev/null || true
   (cd "$shome/vendor/vagrant" && git fetch && git reset --hard "v${VAGRANT_VERSION}")
   (cd "$shome/vendor/vagrant" && echo gem '"mini_portile2"' >> Gemfile)
   (cd "$shome/vendor/vagrant" && echo gem '"vagrant-aws"' >> Gemfile)
+
   (cd "$shome/vendor/vagrant" && block compile bundler)
 }
 
