@@ -6,16 +6,10 @@ fi
 
 function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
-
   source "$shome/script/profile"
 
-  if [[ "${2:-}" =~ ^(ssh|rsync|scp)$ ]]; then
-    local nm_guest="$1"; shift
-    local nm_parity="$1"; shift
-    exec "parity-${nm_parity}" "$nm_guest" "$@"
-  else
-    exec $(which /usr/bin/vagrant /usr/local/bin/vagrant) "$@"
-  fi
+  export BUNDLE_GEMFILE="$shome/vendor/vagrant/Gemfile"
+  exec bundle exec vagrant "$@"
 }
 
 source sub "$0" "$@"

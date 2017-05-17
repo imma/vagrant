@@ -4,21 +4,11 @@ function bootstrap {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  case "$(uname -s)" in
-    Darwin)
-      block compile dmg \
-        "https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.dmg" \
-        'Vagrant' 'Vagrant.pkg'
-      ;;
-    Linux)
-      local url_vagrant="https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb"
-      local fnm_vagrant="$(basename "$url_vagrant")"
-      cache curl "$fnm_vagrant" "$url_vagrant"
-      sudo dpkg -i "${BASEBOX_CACHE}/curl/$fnm_vagrant"
-      ;;
-  esac
-
-  vagrant plugin install vagrant-aws
+  git clone git@github.com:mitchellh/vagrant "$shome/vendor/vagrant" 2>/dev/null || true
+  (cd "$shome/vendor/vagrant" && git fetch && git reset --hard "v${VAGRANT_VERSION}")
+  (cd "$shome/vendor/vagrant" && echo gem '"mini_portile2"' >> Gemfile)
+  (cd "$shome/vendor/vagrant" && echo gem '"vagrant-aws"' >> Gemfile)
+  (cd "$shome/vendor/vagrant" && block compile bundler)
 }
 
 bootstrap
