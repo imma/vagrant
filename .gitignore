@@ -1,4 +1,4 @@
 /.vagrant.d
 /.vagrant-*-ssh-config
 /.bundle
-/vendor/vagrant
+/vendor/vagrant*
