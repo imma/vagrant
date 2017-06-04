@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 function _vagrant_profile {
-  local shome="${_vagrant_home:-"$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
+  local shome="${_vagrant_home:="$(cd -P -- "$(dirname -- "$BASH_SOURCE")/.." && pwd -P)"}"
   PATH="$shome/bin:$shome/exec:$PATH"
 
   VAGRANT_VERSION='1.9.5'
