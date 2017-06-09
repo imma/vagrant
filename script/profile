@@ -7,6 +7,8 @@ function _vagrant_profile {
   VAGRANT_VERSION='1.9.5'
 
   export VAGRANT_I_KNOW_WHAT_IM_DOING_PLEASE_BE_QUIET=1
+  export VAGRANT_BOX_UPDATE_CHECK_DISABLE=1
+  export VAGRANT_CHECKPOINT_DISABLE=1
 }
 
 _vagrant_profile
