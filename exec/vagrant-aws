@@ -6,7 +6,11 @@ function main {
 
   export VAGRANT_DEFAULT_PROVIDER="aws"
 
-  exec vagrant "$@"
+  if [[ -d .terraform ]]; then
+    exec fogg env vagrant "$@"
+  else
+    exec vagrant "$@"
+  fi
 }
 
 source sub "$0" "$@"

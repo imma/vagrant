@@ -9,11 +9,7 @@ function main {
   source "$shome/script/profile"
 
   export BUNDLE_GEMFILE="$shome/vendor/vagrant-defn/Gemfile"
-  if [[ -d .terraform ]]; then
-    exec fogg env bundle exec vagrant "$@"
-  else
-    exec bundle exec vagrant "$@"
-  fi
+  exec bundle exec vagrant "$@"
 }
 
 source sub "$0" "$@"
