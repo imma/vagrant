@@ -8,8 +8,9 @@ function main {
   local shome="$(cd -P -- "${BASH_SOURCE%/*}/.." && pwd -P)"
   source "$shome/script/profile"
 
-  export BUNDLE_GEMFILE="$shome/vendor/vagrant-defn/Gemfile"
-  exec bundle exec vagrant "$@"
+  #export BUNDLE_GEMFILE="$shome/vendor/vagrant-defn/Gemfile"
+  #exec bundle exec vagrant "$@"
+  exec /opt/vagrant/bin/vagrant "$@"
 }
 
 source sub "$0" "$@"
