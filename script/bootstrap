@@ -16,11 +16,17 @@ function bootstrap {
           "https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.dmg" \
           'Vagrant' 'Vagrant.pkg'
         ;;
-      Ubuntu|Amazon)
+      Ubuntu)
         local url_vagrant="https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.deb"
         local fnm_vagrant="$(basename "$url_vagrant")"
         cache curl "$fnm_vagrant" "$url_vagrant"
         ${NOSUDO} sudo dpkg -i "${BASEBOX_CACHE}/curl/$fnm_vagrant"
+        ;;
+      Amazon)
+        local url_vagrant="https://releases.hashicorp.com/vagrant/${VAGRANT_VERSION}/vagrant_${VAGRANT_VERSION}_x86_64.rpm"
+        local fnm_vagrant="$(basename "$url_vagrant")"
+        cache curl "$fnm_vagrant" "$url_vagrant"
+        ${NOSUDO} sudo rpm -Uvh "${BASEBOX_CACHE}/curl/$fnm_vagrant"
         ;;
     esac
   else
