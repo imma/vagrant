@@ -2,5 +2,8 @@
   "require": [
     "curl",
     "parity"
-  ]
+  ],
+  "versions": {
+    "vagrant": "hashicorp/vagrant"
+  }
 }
